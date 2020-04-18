@@ -67,6 +67,8 @@ main(int argc, char *argv[]){
     LOG_INFO("pop failed\n");
   }
 
-  // stack not allocated dynamically so deconstructor will call end of main block
+  // clean up
+  delete stack;
+
   return 0;
 }

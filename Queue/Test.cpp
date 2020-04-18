@@ -75,6 +75,8 @@ main(int argc, char *argv[]){
     checkAndPrint(queue);
   }
 
-  // queue not allocated dynamically so deconstructor will call end of main block
+  // clean up
+  delete queue;
+
   return 0;
 }
