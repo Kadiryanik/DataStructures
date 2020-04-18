@@ -92,6 +92,9 @@ SinglyLinkedList<T>::remove(Node<T> *node){
     indirect = &(*indirect)->next;
   }
 
-  // just remove it, doesnt matter header, tail or any index
+  // just remove it, doesnt matter head, tail or any index
   *indirect = node->next;
+
+  // clean up node
+  delete node;
 }
