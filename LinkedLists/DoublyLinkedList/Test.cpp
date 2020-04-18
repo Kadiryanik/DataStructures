@@ -35,29 +35,29 @@ main(int argc, char *argv[]){
   LOG_INFO("Removing Items\n");
   // removing containing item test
   list.remove(list.search(8));
-  // removing containing item test
+  // removing not containing item test
   list.remove(list.search(20));
 
   // char tests
   DoublyLinkedList<char> listChar;
 
-  list.insert('A');
-  list.insert('E');
-  list.insert('S');
+  listChar.insert('A');
+  listChar.insert('E');
+  listChar.insert('S');
 
   // match test
   char c = 'A';
-  LOG_INFO("Searching[%c]: %p\n", c, list.search(c));
+  LOG_INFO("Searching[%c]: %p\n", c, listChar.search(c));
   // not match test
   c = 'D';
-  LOG_INFO("Searching[%c]: %p\n", c, list.search(c));
+  LOG_INFO("Searching[%c]: %p\n", c, listChar.search(c));
 
   LOG_INFO("Removing Items\n");
   // removing containing item test
-  list.remove(list.search('A'));
-  // removing containing item test
-  list.remove(list.search('T'));
+  listChar.remove(listChar.search('A'));
+  // removing not containing item test
+  listChar.remove(listChar.search('T'));
 
-  // list not allocated dynamically so deconstructor will call end of main block
+  // lists not allocated dynamically so deconstructor will call end of main block
   return 0;
 }
