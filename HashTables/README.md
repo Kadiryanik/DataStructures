@@ -2,6 +2,7 @@
 A simple hash table implementations. Supported collision handling techniques.
 
  - Linear Probing
+ - Quadratic Probing
 
 For more detailed prints you can modify **project-conf.h**. Such as set **LOG_LEVEL_CONF_HASH_TABLE** to **LOG_LEVEL_DBG** and **PRINT_WITH_FUNC_LINE** to **1**.
 
@@ -18,5 +19,5 @@ $ make clean
 #### Change Collision Handling Technique
 Set the **TECH** flag while compiling. Clean before changing techniques. Default technique is *LinearProbing*.
 ```sh
-$ make TECH=LinearProbing
+$ make TECH=QuadraticProbing
 ```

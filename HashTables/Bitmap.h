@@ -17,6 +17,9 @@ public:
   bool reset(int index);
   void clear();
   bool isFull();
+
+  /* overload operator for deep copy */
+  Bitmap& operator=(const Bitmap &other);
 };
 
 #endif /* BITMAP_H_ */

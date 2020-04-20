@@ -19,8 +19,6 @@ searchAndLog(HashTable *hashTable, string str){
   if(ptr != NULL){
     Person *person = (Person *)ptr;
     person->print();
-  } else{
-    LOG_INFO("\"%s\" not found\n", str.c_str());
   }
 }
 
@@ -48,8 +46,6 @@ main(int argc, char *argv[]){
   hashTable->insert(p3.key(), (void *)&p3);
   hashTable->insert(p4.key(), (void *)&p4);
   hashTable->insert(p5.key(), (void *)&p5);
-
-  // this will fail, hash table size equal 5
   hashTable->insert(p6.key(), (void *)&p6);
   hashTable->insert(p7.key(), (void *)&p7);
 

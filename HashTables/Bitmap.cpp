@@ -111,3 +111,29 @@ Bitmap::isFull(){
   // if reach here mean bitmap full
   return true;
 }
+
+/*------------------------------------------------------------------------------*/
+Bitmap& 
+Bitmap::operator=(const Bitmap &other){
+  // if allocated before clean up memory
+  if(this->bitmap != NULL) delete [] this->bitmap;
+
+  // copy the variables
+  this->bitmapSize = other.bitmapSize;
+  this->totalBits = other.totalBits;
+
+  // try to allocate
+  this->bitmap = new uint8_t[this->bitmapSize];
+  if(this->bitmap == NULL){
+    LOG_ERR("Bitmap allocation failed! (operaor=)\n");
+    exit(-1);
+  }
+
+  // copy the bitmap array
+  for(int i = 0; i < this->bitmapSize; i++){
+    this->bitmap[i] = other.bitmap[i];
+  }
+
+  // returning itself
+  return *this;
+}
