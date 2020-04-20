@@ -13,10 +13,11 @@
 #endif /* LOG_LEVEL_CONF_HASH_TABLE */
 
 /*------------------------------------------------------------------------------*/
-HashTable::HashTable(int tableSize){
+HashTable::HashTable(int tableSize, int colUplimit){
   LOG_DBG("HashTable Constructor\n");
   
   this->tableSize = tableSize;
+  this->colUplimit = colUplimit;
   this->table = new KeyValue[tableSize];
   if(this->table == NULL){
     LOG_ERR("HashTable allocation failed!\n");
@@ -97,6 +98,7 @@ int
 HashTable::searchIndex(string key){
   int index = this->hash(key);
   int i = 1, startPointIndex = index;
+  int collisionCount = 0;
 
   do{
     // if index used
@@ -112,10 +114,13 @@ HashTable::searchIndex(string key){
 
     // set index to next
     index = (index + (i * i)) % this->tableSize;
+
+    collisionCount++;
     i++; // increase i and continue
-  } while(startPointIndex != index); /* end when index reached again 
-                                      * the startPointIndex, this mean 
-                                      * we checked every item on table */
+
+    /* continue until reach colUplimit or index != startPointIndex, 
+     * index == startPointIndex mean we are in index-loop */
+  } while(startPointIndex != index && collisionCount < this->colUplimit); 
 
   // if reach here all table checked and not found
   return this->tableSize; // return unvalid index
@@ -126,20 +131,26 @@ bool
 HashTable::insertStep(string key, void *ptr){
   int index = this->hash(key);
   int i = 1, startPointIndex = index;
+  int collisionCount = 0;
 
   // find empty index
   while(this->bitmap->isUsed(index)){
     LOG_DBG("Collision: for key \"%s\" index %d\n", key.c_str(), index);
     index = (index + (i * i)) % this->tableSize;
-  
-    /* end when index reached again 
-     * the startPointIndex, this mean 
-     * we are in infinite loop */
-    if(index == startPointIndex){
-      LOG_DBG("Collision: for key \"%s\"insert failed (index-loop)! Trying to "
-        "remap!\n", key.c_str());
+
+    // increase collision count before check
+    collisionCount++;
+
+    /* continue until reach colUplimit or index != startPointIndex, 
+     * index == startPointIndex mean we are in index-loop */
+    if(collisionCount >= this->colUplimit){
+      LOG_DBG("CollisionCount exceeded. Trying to remap!\n");
+      return false;
+    } else if(index == startPointIndex){
+      LOG_DBG("Index-loop. Trying to remap!\n");
       return false;
     }
+
     i++; // increase i and continue
   }
 
@@ -204,7 +215,6 @@ HashTable::remap(string key, void *ptr){
   for(int i = 0; i < hashTable->tableSize; i++){
     this->table[i].set(hashTable->table[i].key(), hashTable->table[i].value());
   }
-
 
   /* copy new bitmap to this
    * make sure = operator overloaded for deep copy in Bitmap class. */

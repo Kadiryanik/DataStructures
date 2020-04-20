@@ -9,6 +9,7 @@ class HashTable{
   /* Table ptr and size */
   KeyValue *table;
   int tableSize;
+  int colUplimit;
 
   /* stores the which indexes is used or not used */
   Bitmap *bitmap;
@@ -20,7 +21,7 @@ class HashTable{
 
   void print();
 public:
-  HashTable(int tableSize);
+  HashTable(int tableSize, int colUplimit = 3);
   ~HashTable();
 
   bool insert(string key, void *ptr);
