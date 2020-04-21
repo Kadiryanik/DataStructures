@@ -15,7 +15,8 @@
 template <class T>
 LinkedList<T>::LinkedList(){
   LOG_DBG("List Constructor\n");
-
+  
+  this->itemCount = 0;
   this->head = NULL;
   this->tail = NULL;
 }
@@ -60,6 +61,8 @@ LinkedList<T>::insert(T val){
     }
   }
 
+  // increase count
+  this->itemCount++;
   return newNode;
 }
 
@@ -92,6 +95,22 @@ LinkedList<T>::search(T val, bool walkForward){
 }
 
 /*------------------------------------------------------------------------------*/
+template <class T> Node<T>*
+LinkedList<T>::get(int index){
+  Node<T> *ptr = this->head;
+
+  for(int i = 0; i < index; i++){
+    if(ptr == NULL){
+      return NULL;
+    }
+
+    ptr = ptr->next;
+  }
+
+  return ptr;
+}
+
+/*------------------------------------------------------------------------------*/
 template <class T> void
 LinkedList<T>::remove(Node<T> *node){
   if(node == NULL){
@@ -117,6 +136,15 @@ LinkedList<T>::remove(Node<T> *node){
     (*indirect)->prev = node->prev;
   }
 
+  // decrease count
+  this->itemCount--;
+
   // clean up node
   delete node;
+}
+
+/*------------------------------------------------------------------------------*/
+template <class T> int
+LinkedList<T>::getItemCount(){
+  return this->itemCount;
 }

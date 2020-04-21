@@ -6,6 +6,7 @@
 /*------------------------------------------------------------------------------*/
 template <class T>
 class LinkedList{
+  int itemCount;
   Node<T> *head;
   Node<T> *tail;
 public:
@@ -14,7 +15,9 @@ public:
 
   Node<T>* insert(T val);
   Node<T>* search(T val, bool walkForward = true);
+  Node<T>* get(int index);
   void remove(Node<T> *node);
+  int getItemCount();
 };
 
 #endif /* LINKED_LIST_H_ */

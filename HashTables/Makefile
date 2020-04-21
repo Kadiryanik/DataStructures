@@ -12,13 +12,19 @@ CFLAGS += -std=c++0x
 
 LIB_DIRS = .
 
-# set technique library
-ifdef TECH
+# if not defined the technique set to default
+ifndef TECH
+TECH=LinearProbing
+endif
+
+# add technique to flags
 CFLAGS += -I$(TECH)
 LIB_DIRS += $(TECH)
-else
-CFLAGS += -ILinearProbing
-LIB_DIRS += LinearProbing
+
+# Seperate Chaining needs the linked list
+ifeq ($(TECH),SeparateChaining)
+CFLAGS += -I../LinkedLists/DoublyLinkedList
+LIB_DIRS += ../LinkedLists/DoublyLinkedList
 endif
 
 # set source files and object files under LIB_DIRS

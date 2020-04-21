@@ -3,6 +3,7 @@ A simple hash table implementations. Supported collision handling techniques.
 
  - Linear Probing
  - Quadratic Probing
+ - Separate Chaining
 
 For more detailed prints you can modify **project-conf.h**. Such as set **LOG_LEVEL_CONF_HASH_TABLE** to **LOG_LEVEL_DBG** and **PRINT_WITH_FUNC_LINE** to **1**.
 

@@ -10,13 +10,16 @@ class KeyValue{
   string keyVar;
   void *valuePtr; // Points to any kind of data.
 public:
-  KeyValue();
-  KeyValue(string key, void *value);
+  KeyValue(string key = "", void *value = NULL);
   ~KeyValue();
 
   void set(string key, void *value);
   string key();
   void* value();
+
+  bool operator==(const KeyValue &other);
+  /* overload operator for deep copy */
+  KeyValue& operator=(const KeyValue &other);
 };
 
 #endif /* KEY_VALUE_H_ */
