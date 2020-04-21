@@ -1,5 +1,5 @@
 #include <iostream>
-#include "DoublyLinkedList.h"
+#include "LinkedList.h"
 
 /*------------------------------------------------------------------------------*/
 #include "Log.h"
@@ -13,16 +13,16 @@
 
 /*------------------------------------------------------------------------------*/
 template <class T>
-DoublyLinkedList<T>::DoublyLinkedList(){
+LinkedList<T>::LinkedList(){
   LOG_DBG("List Constructor\n");
-  
+
   this->head = NULL;
   this->tail = NULL;
 }
 
 /*------------------------------------------------------------------------------*/
 template <class T>
-DoublyLinkedList<T>::~DoublyLinkedList(){
+LinkedList<T>::~LinkedList(){
   LOG_DBG("List Deconstructor\n");
 
   while(head != NULL){
@@ -32,16 +32,18 @@ DoublyLinkedList<T>::~DoublyLinkedList(){
 
 /*------------------------------------------------------------------------------*/
 template <class T> Node<T>* 
-DoublyLinkedList<T>::insert(T val){
+LinkedList<T>::insert(T val){
+  Node<T>* newNode = NULL;
+  
   if(this->head == NULL){
     this->head = new Node<T>(val);
     this->tail = this->head;
 
     LOG_DBG("insert to head: %p\n", this->head);
-    return this->head;
+    newNode = this->head;
   } else{
     // allocate to end of list
-    Node<T>* newNode = new Node<T>(val);
+    newNode = new Node<T>(val);
 
     if(newNode != NULL){
       // set current tail's next
@@ -52,19 +54,18 @@ DoublyLinkedList<T>::insert(T val){
 
       // update tail
       this->tail = newNode;
+      LOG_DBG("insert: %p\n", newNode);
     } else{
       LOG_ERR("insert: memory allocation failed!\n");
-      return NULL;
     }
-
-    LOG_DBG("insert: %p\n", newNode);
-    return newNode;
   }
+
+  return newNode;
 }
 
 /*------------------------------------------------------------------------------*/
 template <class T> Node<T>* 
-DoublyLinkedList<T>::search(T val, bool walkForward){
+LinkedList<T>::search(T val, bool walkForward){
   Node<T> *ptr;
   
   if(walkForward){
@@ -92,7 +93,7 @@ DoublyLinkedList<T>::search(T val, bool walkForward){
 
 /*------------------------------------------------------------------------------*/
 template <class T> void
-DoublyLinkedList<T>::remove(Node<T> *node){
+LinkedList<T>::remove(Node<T> *node){
   if(node == NULL){
     LOG_WARN("remove: NULL pointer!\n");
     return;

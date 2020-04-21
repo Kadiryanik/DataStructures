@@ -8,9 +8,9 @@ class Node{
 public:
   Node *next;
   Node *prev;
+
   Node(T = 0);
   ~Node();
-
   T val();
 };
 

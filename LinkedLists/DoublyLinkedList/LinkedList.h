@@ -1,20 +1,20 @@
-#ifndef SINGLY_LINKED_LIST_H_
-#define SINGLY_LINKED_LIST_H_
+#ifndef LINKED_LIST_H_
+#define LINKED_LIST_H_
 
 #include "Node.h"
 
 /*------------------------------------------------------------------------------*/
 template <class T>
-class SinglyLinkedList{
+class LinkedList{
   Node<T> *head;
   Node<T> *tail;
 public:
-  SinglyLinkedList();
-  ~SinglyLinkedList();
+  LinkedList();
+  ~LinkedList();
 
   Node<T>* insert(T val);
-  Node<T>* search(T val);
+  Node<T>* search(T val, bool walkForward = true);
   void remove(Node<T> *node);
 };
 
-#endif /* SINGLY_LINKED_LIST_H_ */
+#endif /* LINKED_LIST_H_ */

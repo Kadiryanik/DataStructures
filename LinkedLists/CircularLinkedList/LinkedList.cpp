@@ -1,6 +1,6 @@
 #include <iostream>
 #include <unistd.h>
-#include "CircularLinkedList.h"
+#include "LinkedList.h"
 
 /*------------------------------------------------------------------------------*/
 #include "Log.h"
@@ -14,7 +14,7 @@
 
 /*------------------------------------------------------------------------------*/
 template <class T>
-CircularLinkedList<T>::CircularLinkedList(){
+LinkedList<T>::LinkedList(){
   LOG_DBG("List Constructor\n");
   
   this->head = NULL;
@@ -22,7 +22,7 @@ CircularLinkedList<T>::CircularLinkedList(){
 
 /*------------------------------------------------------------------------------*/
 template <class T>
-CircularLinkedList<T>::~CircularLinkedList(){
+LinkedList<T>::~LinkedList(){
   LOG_DBG("List Deconstructor\n");
 
   while(head != NULL){
@@ -32,7 +32,7 @@ CircularLinkedList<T>::~CircularLinkedList(){
 
 /*------------------------------------------------------------------------------*/
 template <class T> Node<T>* 
-CircularLinkedList<T>::insert(T val){
+LinkedList<T>::insert(T val){
   if(this->head == NULL){
     this->head = new Node<T>(val);
 
@@ -70,7 +70,7 @@ CircularLinkedList<T>::insert(T val){
 
 /*------------------------------------------------------------------------------*/
 template <class T> Node<T>* 
-CircularLinkedList<T>::search(T val, bool walkForward){
+LinkedList<T>::search(T val, bool walkForward){
   Node<T> *ptr = this->head;
   
   if(walkForward){
@@ -104,7 +104,7 @@ CircularLinkedList<T>::search(T val, bool walkForward){
 
 /*------------------------------------------------------------------------------*/
 template <class T> void
-CircularLinkedList<T>::remove(Node<T> *node){
+LinkedList<T>::remove(Node<T> *node){
   if(node == NULL){
     LOG_WARN("remove: NULL pointer!\n");
     return;

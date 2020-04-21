@@ -1,5 +1,5 @@
 #include <iostream>
-#include "SinglyLinkedList.h"
+#include "LinkedList.h"
 
 /*------------------------------------------------------------------------------*/
 #include "Log.h"
@@ -13,7 +13,7 @@
 
 /*------------------------------------------------------------------------------*/
 template <class T>
-SinglyLinkedList<T>::SinglyLinkedList(){
+LinkedList<T>::LinkedList(){
   LOG_DBG("List Constructor\n");
   
   this->head = NULL;
@@ -22,7 +22,7 @@ SinglyLinkedList<T>::SinglyLinkedList(){
 
 /*------------------------------------------------------------------------------*/
 template <class T>
-SinglyLinkedList<T>::~SinglyLinkedList(){
+LinkedList<T>::~LinkedList(){
   LOG_DBG("List Deconstructor\n");
 
   while(head != NULL){
@@ -32,7 +32,7 @@ SinglyLinkedList<T>::~SinglyLinkedList(){
 
 /*------------------------------------------------------------------------------*/
 template <class T> Node<T>* 
-SinglyLinkedList<T>::insert(T val){
+LinkedList<T>::insert(T val){
   if(this->head == NULL){
     this->head = new Node<T>(val);
     this->tail = this->head;
@@ -61,7 +61,7 @@ SinglyLinkedList<T>::insert(T val){
 
 /*------------------------------------------------------------------------------*/
 template <class T> Node<T>* 
-SinglyLinkedList<T>::search(T val){
+LinkedList<T>::search(T val, bool walkForward){
   Node<T> *ptr = this->head;
   
   while(ptr != NULL){
@@ -76,7 +76,7 @@ SinglyLinkedList<T>::search(T val){
 
 /*------------------------------------------------------------------------------*/
 template <class T> void
-SinglyLinkedList<T>::remove(Node<T> *node){
+LinkedList<T>::remove(Node<T> *node){
   if(node == NULL){
     LOG_WARN("remove: NULL pointer!\n");
     return;
