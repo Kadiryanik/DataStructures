@@ -13,7 +13,7 @@
 #endif /* LOG_LEVEL_CONF_HASH_TABLE */
 
 /*------------------------------------------------------------------------------*/
-HashTable::HashTable(int tableSize){
+HashTable::HashTable(int tableSize, int colUplimit){
   LOG_DBG("HashTable Constructor\n");
   
   this->tableSize = tableSize;
@@ -93,6 +93,12 @@ HashTable::search(string key){
 
   LOG_INFO("Key \"%s\" not found on table!\n", key.c_str());
   return NULL;
+}
+
+/*------------------------------------------------------------------------------*/
+int 
+HashTable::getTableSize(){
+  return this->tableSize;
 }
 
 /*------------------------------------------------------------------------------*/

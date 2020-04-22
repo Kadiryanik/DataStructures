@@ -12,10 +12,20 @@
 #endif /* LOG_LEVEL_CONF_PERSON */
 
 /*------------------------------------------------------------------------------*/
-Person::Person(string name, string surname, int age){
-  this->name = name;
-  this->surname = surname;
-  this->age = age;
+Person::Person(string email, string firstName, string lastName, \
+    string companyName, string address, string city, string county, \
+    string postal, string phone1, string phone2, string web){
+  this->email = email;
+  this->firstName = firstName;
+  this->lastName = lastName;
+  this->companyName = companyName;
+  this->address = address;
+  this->city = city;
+  this->county = county;
+  this->postal = postal;
+  this->phone1 = phone1;
+  this->phone2 = phone2;
+  this->web = web;
 }
 
 /*------------------------------------------------------------------------------*/
@@ -26,16 +36,41 @@ Person::~Person(){
 /*------------------------------------------------------------------------------*/
 string 
 Person::key(){
-  string key(this->name + this->surname + to_string(this->age));
-  return key;
+  // email must be unique, could be add any other field too
+  return this->email;
+}
+
+/*------------------------------------------------------------------------------*/
+string 
+Person::getEmail(){
+  return this->email;
 }
 
 /*------------------------------------------------------------------------------*/
 void 
 Person::print(){
   LOG_INFO("PersonInfo\n");
-  LOG_INFO_("  Ptr     : %p\n", this);
-  LOG_INFO_("  Name    : %s\n", this->name.c_str());
-  LOG_INFO_("  Surname : %s\n", this->surname.c_str());
-  LOG_INFO_("  Age     : %d\n", this->age);
+  LOG_DBG(" Ptr      : %p\n", this);
+  LOG_INFO(" FirstName: %s\n", this->firstName.c_str());
+  LOG_INFO(" LastName : %s\n", this->lastName.c_str());
+  LOG_INFO(" Company  : %s\n", this->companyName.c_str());
+  LOG_INFO(" Address  : %s\n", this->address.c_str());
+  LOG_INFO(" City     : %s\n", this->city.c_str());
+  LOG_INFO(" County   : %s\n", this->county.c_str());
+  LOG_INFO(" Postal   : %s\n", this->postal.c_str());
+  LOG_INFO(" Phone1   : %s\n", this->phone1.c_str());
+  LOG_INFO(" Phone2   : %s\n", this->phone2.c_str());
+  LOG_INFO(" Email    : %s\n", this->email.c_str());
+  LOG_INFO(" Web      : %s\n", this->web.c_str());
+}
+
+/*------------------------------------------------------------------------------*/
+bool 
+Person::operator==(const Person &other){
+  // email must be unique
+  if(this->email.compare(other.email) == 0){
+    return true;
+  }
+
+  return false;
 }

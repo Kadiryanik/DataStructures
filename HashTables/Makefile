@@ -7,8 +7,8 @@ CFLAGS = -Wall
 # include directories
 CFLAGS += -I.
 CFLAGS += -I../.
-# for to_string function
-CFLAGS += -std=c++0x
+# for elapsed time
+CFLAGS += -std=gnu++11
 
 LIB_DIRS = .
 
@@ -21,11 +21,8 @@ endif
 CFLAGS += -I$(TECH)
 LIB_DIRS += $(TECH)
 
-# Seperate Chaining needs the linked list
-ifeq ($(TECH),SeparateChaining)
 CFLAGS += -I../LinkedLists/DoublyLinkedList
 LIB_DIRS += ../LinkedLists/DoublyLinkedList
-endif
 
 # set source files and object files under LIB_DIRS
 SOURCE_FILES = ${foreach d, $(LIB_DIRS), ${subst ${d}/,,${wildcard $(d)/*.cpp}}}

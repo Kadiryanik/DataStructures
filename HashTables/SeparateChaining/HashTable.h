@@ -28,6 +28,8 @@ public:
   bool insert(string key, void *ptr);
   bool remove(string key);
   void* search(string key);
+
+  int getTableSize();
 };
 
 #endif /* HASH_TABLE_H_ */

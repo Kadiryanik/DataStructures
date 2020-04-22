@@ -16,12 +16,16 @@ class HashTable{
   int hash(string key);
   int searchIndex(string key);
 public:
-  HashTable(int tableSize);
+  /* INFO: colUplimit not used in this collision handling 
+   * technique initialized for common usage */
+  HashTable(int tableSize, int colUplimit = 3);
   ~HashTable();
 
   bool insert(string key, void *ptr);
   bool remove(string key);
   void* search(string key);
+
+  int getTableSize();
 };
 
 #endif /* HASH_TABLE_H_ */
