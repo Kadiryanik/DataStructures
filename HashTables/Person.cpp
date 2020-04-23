@@ -1,3 +1,8 @@
+/*
+ * Data Structures - Person data type implementation
+ *
+ * Copyright (C) Kadir Yanık - <kdrynkk@gmail.com>, 2020
+ */
 #include <iostream>
 #include "Person.h"
 

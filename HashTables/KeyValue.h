@@ -1,3 +1,8 @@
+/*
+ * Data Structures - Key-value data type implementation
+ *
+ * Copyright (C) Kadir Yanık - <kdrynkk@gmail.com>, 2020
+ */
 #ifndef KEY_VALUE_H_
 #define KEY_VALUE_H_
 
@@ -6,7 +11,6 @@ using namespace std;
 
 /*------------------------------------------------------------------------------*/
 class KeyValue{
-  // TODO: may char array usable.
   string keyVar;
   void *valuePtr; // Points to any kind of data.
 public:

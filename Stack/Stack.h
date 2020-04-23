@@ -1,3 +1,8 @@
+/*
+ * Data Structures - Simple stack implementation
+ *
+ * Copyright (C) Kadir Yanık - <kdrynkk@gmail.com>, 2020
+ */
 #ifndef STACK_H_
 #define STACK_H_
 

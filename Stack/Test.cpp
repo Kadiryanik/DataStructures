@@ -1,3 +1,8 @@
+/*
+ * Data Structures - Stack - Test file
+ *
+ * Copyright (C) Kadir Yanık - <kdrynkk@gmail.com>, 2020
+ */
 #include <iostream>
 #include "Stack.h"
 

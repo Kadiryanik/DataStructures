@@ -1,3 +1,8 @@
+/*
+ * Data Structures - Simple circular linked list implementation
+ *
+ * Copyright (C) Kadir Yanık - <kdrynkk@gmail.com>, 2020
+ */
 #include <iostream>
 #include <unistd.h>
 #include "LinkedList.h"

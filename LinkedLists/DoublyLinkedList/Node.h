@@ -1,3 +1,8 @@
+/*
+ * Data Structures - Simple doubly linked list implementation
+ *
+ * Copyright (C) Kadir Yanık - <kdrynkk@gmail.com>, 2020
+ */
 #ifndef NODE_H_
 #define NODE_H_
 

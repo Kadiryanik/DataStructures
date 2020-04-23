@@ -1,3 +1,8 @@
+/*
+ * Data Structures - Simple linear probing hash table implementation
+ *
+ * Copyright (C) Kadir Yanık - <kdrynkk@gmail.com>, 2020
+ */
 #include <iostream>
 #include <cstdlib>
 #include "HashTable.h"

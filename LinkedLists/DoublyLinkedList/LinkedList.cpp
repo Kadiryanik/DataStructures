@@ -1,3 +1,8 @@
+/*
+ * Data Structures - Simple doubly linked list implementation
+ *
+ * Copyright (C) Kadir Yanık - <kdrynkk@gmail.com>, 2020
+ */
 #include <iostream>
 #include "LinkedList.h"
 

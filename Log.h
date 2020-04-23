@@ -1,3 +1,8 @@
+/*
+ * Simple Logging Macros
+ *
+ * Copyright (C) Kadir Yanık - <kdrynkk@gmail.com>, 2019
+ */
 #ifndef LOG_H_
 #define LOG_H_
 

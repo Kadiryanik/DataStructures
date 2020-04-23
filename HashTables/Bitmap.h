@@ -1,3 +1,8 @@
+/*
+ * Data Structures - Simple bitmap implementation
+ *
+ * Copyright (C) Kadir Yanık - <kdrynkk@gmail.com>, 2020
+ */
 #ifndef BITMAP_H_
 #define BITMAP_H_
 

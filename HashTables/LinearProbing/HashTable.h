@@ -1,3 +1,8 @@
+/*
+ * Data Structures - Simple linear probing hash table implementation
+ *
+ * Copyright (C) Kadir Yanık - <kdrynkk@gmail.com>, 2020
+ */
 #ifndef HASH_TABLE_H_
 #define HASH_TABLE_H_
 

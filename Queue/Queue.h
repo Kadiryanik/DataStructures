@@ -1,3 +1,8 @@
+/*
+ * Data Structures - Simple queue implementation
+ *
+ * Copyright (C) Kadir Yanık - <kdrynkk@gmail.com>, 2020
+ */
 #ifndef QUEUE_H_
 #define QUEUE_H_
 

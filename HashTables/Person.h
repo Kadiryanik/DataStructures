@@ -1,3 +1,8 @@
+/*
+ * Data Structures - Person data type implementation
+ *
+ * Copyright (C) Kadir Yanık - <kdrynkk@gmail.com>, 2020
+ */
 #ifndef PERSON_H_
 #define PERSON_H_
 
